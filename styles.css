@@ -1,24 +1,61 @@
-* {
+body {
+    display: flex;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding: 2rem;
     background-color: #f5f5f5;
 }
 
-main {
-    max-width: 1200px;
-    margin: 0 auto;
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background-color: #333;
+    color: white;
+    padding: 2rem 1rem;
 }
 
-h1 {
-    text-align: center;
+.sidebar h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .nav-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #444;
+}
+
+main {
+    margin-left: 250px;
+    padding: 2rem;
+    width: calc(100% - 250px);
+}
+
+.product-section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 1.8rem;
     margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #333;
 }
 
 .products-grid {
@@ -27,6 +64,7 @@ h1 {
     gap: 2rem;
 }
 
+/* Existing product card styles remain the same */
 .product-card {
     background: white;
     padding: 1.5rem;
@@ -34,61 +72,42 @@ h1 {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.product-card h2 {
-    margin-bottom: 1rem;
-    color: #333;
-    font-size: 1.2rem;
+/* Add smooth scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.input-group label {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.input-group input,
-.input-group select {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-.price {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
-    font-weight: bold;
-}
-
-@media (max-width: 1024px) {
+/* Responsive adjustments */
+@media (max-width: 1400px) {
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    main {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+}
+
 @media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+    
+    main {
+        margin-left: 0;
+        width: 100%;
+    }
+    
     .products-grid {
         grid-template-columns: 1fr;
     }
-}
-// ... existing styles ...
-
-.total-cost {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.total-cost h2 {
-    color: #333;
 }
