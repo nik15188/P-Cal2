@@ -238,3 +238,69 @@ section {
     color: #333;
     margin: 0;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 2rem;
+    background-color: #f5f5f5;
+}
+
+main {
+    max-width: 1400px;  /* Increased from 1200px */
+    margin: 0 auto;
+    padding: 0 120px;   /* Added significant padding on sides */
+}
+
+/* Category Navigation and Total Cost should match main container width */
+.category-nav,
+.total-cost {
+    max-width: 1400px;  /* Match main container */
+    margin: 0 auto;
+    padding: 1rem 120px;  /* Match main container padding */
+}
+
+/* Product Grid - adjust gap for better spacing */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1600px) {
+    main {
+        padding: 0 80px;
+    }
+    .category-nav,
+    .total-cost {
+        padding: 1rem 80px;
+    }
+}
+
+@media (max-width: 1200px) {
+    main {
+        padding: 0 60px;
+    }
+    .category-nav,
+    .total-cost {
+        padding: 1rem 60px;
+    }
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 0 20px;
+    }
+    .category-nav,
+    .total-cost {
+        padding: 1rem 20px;
+    }
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
