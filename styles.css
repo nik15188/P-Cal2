@@ -1,3 +1,11 @@
+/* Product Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* Creates 3 equal columns */
+    gap: 2rem;  /* Space between grid items */
+    margin-bottom: 2rem;
+}
+
 /* Product Cards */
 .product-card {
     background: white;
@@ -5,11 +13,9 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     position: relative;
-    padding-bottom: 120px;
+    padding-bottom: 120px;  /* Space for button and price */
+    height: 100%;
 }
 
 .product-card:hover {
@@ -151,7 +157,7 @@ section {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);  /* 2 columns on medium screens */
     }
 }
 
@@ -161,7 +167,7 @@ section {
     }
 
     .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* 1 column on mobile */
     }
     
     .category-nav {
