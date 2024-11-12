@@ -4,184 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloudflare Product Calculator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            padding: 2rem;
-            background-color: #f5f5f5;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .category-nav {
-            position: sticky;
-            top: 0;
-            background: white;
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            z-index: 100;
-        }
-
-        .category-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .category-btn:hover {
-            background: #e9ecef;
-            transform: translateY(-2px);
-        }
-
-        .category-btn.active {
-            background: #2196F3;
-            color: white;
-            border-color: #1976D2;
-        }
-
-        .category-btn .icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header {
-            margin: 3rem 0 1.5rem 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #333;
-        }
-
-        .section-header h2 {
-            font-size: 1.8rem;
-            color: #333;
-            margin: 0;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .product-card h3 {
-            margin-bottom: 1rem;
-            color: #333;
-            font-size: 1.2rem;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .input-group label {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .input-group input {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-
-        .calculate-btn {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 1rem 0;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        .calculate-btn:hover {
-            background-color: #1976D2;
-        }
-
-        .price {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .total-cost {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        section {
-            scroll-margin-top: 120px;
-        }
-
-        @media (max-width: 1200px) {
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .category-nav {
-                flex-wrap: wrap;
-                padding: 0.5rem;
-            }
-            
-            .category-btn {
-                padding: 0.75rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <main>
+        <h1>Cloudflare Product Calculator</h1>
+
+        <!-- Category Navigation -->
         <div class="category-nav">
             <button class="category-btn" data-target="compute">
                 <span class="icon">⚡</span>
@@ -201,6 +30,11 @@
             </button>
         </div>
 
+        <!-- Total Cost moved to top -->
+        <div class="total-cost">
+            <h2>Total Monthly Cost: $<span id="total-price">0.00</span></h2>
+        </div>
+
         <!-- Compute Section -->
         <section id="compute">
             <div class="section-header">
@@ -215,8 +49,10 @@
                         <label for="workers-cpu">CPU Time (ms)</label>
                         <input type="number" id="workers-cpu" value="1">
                     </div>
-                    <button class="calculate-btn" onclick="calculateWorkers()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="workers-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateWorkers()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="workers-price">0.00</span></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -237,8 +73,10 @@
                         <label for="r2-class-b">Class B Operations</label>
                         <input type="number" id="r2-class-b" value="1">
                     </div>
-                    <button class="calculate-btn" onclick="calculateR2()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="r2-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateR2()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="r2-price">0.00</span></div>
+                    </div>
                 </div>
 
                 <div class="product-card">
@@ -255,8 +93,10 @@
                         <label for="kv-storage">Storage (GB)</label>
                         <input type="number" id="kv-storage" value="1">
                     </div>
-                    <button class="calculate-btn" onclick="calculateKV()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="kv-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateKV()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="kv-price">0.00</span></div>
+                    </div>
                 </div>
 
                 <div class="product-card">
@@ -269,8 +109,10 @@
                         <label for="d1-storage">Storage (GB)</label>
                         <input type="number" id="d1-storage" value="1">
                     </div>
-                    <button class="calculate-btn" onclick="calculateD1()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="d1-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateD1()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="d1-price">0.00</span></div>
+                    </div>
                 </div>
 
                 <div class="product-card">
@@ -281,8 +123,10 @@
                         <label for="do-duration">Duration (GB-s)</label>
                         <input type="number" id="do-duration" value="0">
                     </div>
-                    <button class="calculate-btn" onclick="calculateDO()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="do-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateDO()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="do-price">0.00</span></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -299,8 +143,10 @@
                         <label for="ai-gateway-logs">Logs Per Day</label>
                         <input type="number" id="ai-gateway-logs" value="100">
                     </div>
-                    <button class="calculate-btn" onclick="calculateAIGateway()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="ai-gateway-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateAIGateway()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="ai-gateway-price">0.00</span></div>
+                    </div>
                 </div>
 
                 <div class="product-card">
@@ -311,8 +157,10 @@
                         <label for="vectorize-storage">Stored Vector Dimensions</label>
                         <input type="number" id="vectorize-storage" value="120">
                     </div>
-                    <button class="calculate-btn" onclick="calculateVectorize()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="vectorize-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateVectorize()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="vectorize-price">0.00</span></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -329,8 +177,10 @@
                         <label for="cicd-minutes">Minutes Per Day</label>
                         <input type="number" id="cicd-minutes" value="1">
                     </div>
-                    <button class="calculate-btn" onclick="calculateCICD()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="cicd-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateCICD()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="cicd-price">0.00</span></div>
+                    </div>
                 </div>
 
                 <div class="product-card">
@@ -339,8 +189,10 @@
                         <label for="obs-events">Events Per Day</label>
                         <input type="number" id="obs-events" value="500">
                     </div>
-                    <button class="calculate-btn" onclick="calculateObservability()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="obs-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateObservability()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="obs-price">0.00</span></div>
+                    </div>
                 </div>
 
                 <div class="product-card">
@@ -351,8 +203,10 @@
                         <label for="analytics-queries">Read Queries/Day</label>
                         <input type="number" id="analytics-queries" value="500">
                     </div>
-                    <button class="calculate-btn" onclick="calculateAnalytics()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="analytics-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateAnalytics()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="analytics-price">0.00</span></div>
+                    </div>
                 </div>
 
                 <div class="product-card">
@@ -361,66 +215,15 @@
                         <label for="zaraz-events">Daily Events</label>
                         <input type="number" id="zaraz-events" value="1000">
                     </div>
-                    <button class="calculate-btn" onclick="calculateZaraz()">Calculate</button>
-                    <div class="price">Estimated Cost: $<span id="zaraz-price">0.00</span></div>
+                    <div class="button-price-container">
+                        <button class="calculate-btn" onclick="calculateZaraz()">Calculate</button>
+                        <div class="price">Estimated Cost: $<span id="zaraz-price">0.00</span></div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <div class="total-cost">
-            <h2>Total Monthly Cost: $<span id="total-price">0.00</span></h2>
-        </div>
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            
-            // Handle category button clicks
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Get target section and scroll to it
-                    const targetId = this.getAttribute('data-target');
-                    const targetSection = document.getElementById(targetId);
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-
-            // Update active button based on scroll position
-            window.addEventListener('scroll', function() {
-                const sections = document.querySelectorAll('section');
-                
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top <= 150 && rect.bottom >= 150) {
-                        const targetButton = document.querySelector(
-                            `.category-btn[data-target="${section.id}"]`
-                        );
-                        categoryButtons.forEach(btn => btn.classList.remove('active'));
-                        if (targetButton) {
-                            targetButton.classList.add('active');
-                        }
-                    }
-                });
-            });
-        });
-
-        // Add your calculation functions here
-        function calculateWorkers() {
-            // Add calculation logic
-        }
-
-        function calculateR2() {
-            // Add calculation logic
-        }
-
-        // Add other calculation functions...
-    </script>
+    <script src="script.js"></script>
 </body>
-</html>
+</html> 
