@@ -104,16 +104,21 @@
 
 /* Total Cost Section */
 .total-cost {
-    margin-top: 2rem;
-    padding: 1.5rem;
     background: white;
+    padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
+    margin: 2rem 0;
+    position: sticky;
+    top: 80px;
+    z-index: 90;
 }
 
 .total-cost h2 {
     color: #333;
+    margin: 0;
+    font-size: 1.5rem;
 }
 
 /* Section Scroll Margin */
