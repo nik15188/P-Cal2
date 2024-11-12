@@ -91,6 +91,99 @@ h1 {
     margin-bottom: 2rem;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 2rem;
+    background-color: #f5f5f5;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Category Navigation */
+.category-nav {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100;
+    border-radius: 8px;
+}
+
+.category-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.category-btn:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.category-btn.active {
+    background: #2196F3;
+    color: white;
+    border-color: #1976D2;
+}
+
+.category-btn .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Section Headers */
+.section-header {
+    margin: 3rem 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #333;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Product Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
 /* Product Cards */
 .product-card {
     background: white;
@@ -163,6 +256,120 @@ h1 {
 
 .calculate-btn:active {
     transform: translateY(0);
+}
+
+/* Price Display */
+.price {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+/* Total Cost Section */
+.total-cost {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.total-cost h2 {
+    color: #333;
+}
+
+/* Section Scroll Margin */
+section {
+    scroll-margin-top: 120px;
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Error State */
+.error {
+    border-color: #dc3545 !important;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+/* Success State */
+.success {
+    border-color: #28a745 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-nav {
+        flex-wrap: wrap;
+        padding: 0.5rem;
+    }
+    
+    .category-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-btn {
+        width: calc(50% - 0.5rem);
+        padding: 0.5rem;
+    }
+
+    .category-btn .icon {
+        font-size: 1.2rem;
+    }
+
+    .product-card {
+        padding: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .category-nav {
+        display: none;
+    }
+
+    .calculate-btn {
+        display: none;
+    }
+
+    .product-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
 }
 
 /* Price Display */
