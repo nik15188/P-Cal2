@@ -8,6 +8,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
+    padding-bottom: 120px;
 }
 
 .product-card:hover {
@@ -60,8 +62,11 @@
 
 /* Button and Price Container */
 .button-price-container {
-    margin-top: auto;
-    width: 100%;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    padding-top: 1rem;
 }
 
 /* Calculate Button */
@@ -73,10 +78,10 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin: 1rem 0;
     font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.3s ease;
     font-weight: 500;
+    margin-bottom: 1rem;
 }
 
 .calculate-btn:hover {
@@ -90,7 +95,6 @@
 
 /* Price Display */
 .price {
-    margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid #eee;
     font-weight: bold;
