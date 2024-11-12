@@ -1,27 +1,33 @@
-document.getElementById('pricingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get input values
-    const requestsPerDay = parseFloat(document.getElementById('requests').value);
-    const cpuTimeMs = parseFloat(document.getElementById('cpuTime').value);
-    
-    // Calculate monthly requests
-    const monthlyRequests = requestsPerDay * 30;
-    
-    // Pricing tiers (example rates)
-    const REQUEST_RATE = 0.0000005; // $0.50 per million requests
-    const CPU_RATE = 0.00000001; // $0.01 per million ms of CPU time
-    
-    // Calculate costs
-    const requestCost = monthlyRequests * REQUEST_RATE;
-    const cpuCost = monthlyRequests * cpuTimeMs * CPU_RATE;
-    const totalCost = requestCost + cpuCost;
-    
-    // Display results
-    document.getElementById('totalPrice').textContent = `$${totalCost.toFixed(2)}`;
-    document.getElementById('breakdown').innerHTML = `
-        <p>Requests cost: $${requestCost.toFixed(2)}</p>
-        <p>CPU time cost: $${cpuCost.toFixed(2)}</p>
-        <p>Monthly requests: ${monthlyRequests.toLocaleString()}</p>
-    `;
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Highlight active section in navigation
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('.product-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let currentSection = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 100) {
+                currentSection = '#' + section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    });
 });
