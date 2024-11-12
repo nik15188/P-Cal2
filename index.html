@@ -7,144 +7,54 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="sidebar">
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="#compute" class="nav-link">Compute</a></li>
+            <li><a href="#storage" class="nav-link">Storage</a></li>
+            <li><a href="#ai" class="nav-link">AI</a></li>
+            <li><a href="#dx-tools" class="nav-link">DX Tools</a></li>
+        </ul>
+    </nav>
+
     <main>
         <h1>Cloudflare Product Calculator</h1>
-        <div class="products-grid">
-            <!-- Workers -->
-            <div class="product-card">
-                <h2>Workers</h2>
-                <div class="input-group">
-                    <label for="workers-requests">Requests Per Day</label>
-                    <input type="number" id="workers-requests" value="1">
-                    <label for="workers-cpu">CPU Time (ms)</label>
-                    <input type="number" id="workers-cpu" value="1">
-                </div>
-                <div class="price">Estimated Cost: $<span id="workers-price">0.00</span></div>
-            </div>
 
-            <!-- R2 -->
-            <div class="product-card">
-                <h2>R2</h2>
-                <div class="input-group">
-                    <label for="r2-storage">Storage (GB)</label>
-                    <input type="number" id="r2-storage" value="10">
-                    <label for="r2-class-a">Class A Operations</label>
-                    <input type="number" id="r2-class-a" value="100">
-                    <label for="r2-class-b">Class B Operations</label>
-                    <input type="number" id="r2-class-b" value="1">
+        <!-- Compute Section -->
+        <section id="compute" class="product-section">
+            <h2 class="section-title">Compute</h2>
+            <div class="products-grid">
+                <!-- Workers Card -->
+                <div class="product-card">
+                    <!-- Workers content -->
                 </div>
-                <div class="price">Estimated Cost: $<span id="r2-price">0.00</span></div>
             </div>
+        </section>
 
-            <!-- Observability -->
-            <div class="product-card">
-                <h2>Observability</h2>
-                <div class="input-group">
-                    <label for="obs-events">Events Per Day</label>
-                    <input type="number" id="obs-events" value="500">
-                </div>
-                <div class="price">Estimated Cost: $<span id="obs-price">0.00</span></div>
+        <!-- Storage Section -->
+        <section id="storage" class="product-section">
+            <h2 class="section-title">Storage</h2>
+            <div class="products-grid">
+                <!-- R2, Workers KV, D1, Durable Objects cards -->
             </div>
+        </section>
 
-            <!-- D1 -->
-            <div class="product-card">
-                <h2>D1</h2>
-                <div class="input-group">
-                    <label for="d1-reads">Rows Read/Day</label>
-                    <input type="number" id="d1-reads" value="600">
-                    <label for="d1-writes">Rows Written/Day</label>
-                    <input type="number" id="d1-writes" value="12">
-                    <label for="d1-storage">Storage (GB)</label>
-                    <input type="number" id="d1-storage" value="1">
-                </div>
-                <div class="price">Estimated Cost: $<span id="d1-price">0.00</span></div>
+        <!-- AI Section -->
+        <section id="ai" class="product-section">
+            <h2 class="section-title">AI</h2>
+            <div class="products-grid">
+                <!-- AI Gateway, Vectorize cards -->
             </div>
+        </section>
 
-            <!-- Vectorize -->
-            <div class="product-card">
-                <h2>Vectorize</h2>
-                <div class="input-group">
-                    <label for="vectorize-queries">Queried Vector Dimensions/Month</label>
-                    <input type="number" id="vectorize-queries" value="6000">
-                    <label for="vectorize-storage">Stored Vector Dimensions</label>
-                    <input type="number" id="vectorize-storage" value="120">
-                </div>
-                <div class="price">Estimated Cost: $<span id="vectorize-price">0.00</span></div>
+        <!-- DX Tools Section -->
+        <section id="dx-tools" class="product-section">
+            <h2 class="section-title">DX Tools</h2>
+            <div class="products-grid">
+                <!-- CI/CD, Observability, Analytics Engine, Zaraz cards -->
             </div>
+        </section>
 
-            <!-- Durable Objects -->
-            <div class="product-card">
-                <h2>Durable Objects</h2>
-                <div class="input-group">
-                    <label for="do-requests">Requests</label>
-                    <input type="number" id="do-requests" value="0">
-                    <label for="do-duration">Duration (GB-s)</label>
-                    <input type="number" id="do-duration" value="0">
-                </div>
-                <div class="price">Estimated Cost: $<span id="do-price">0.00</span></div>
-            </div>
-
-            <!-- Workers KV -->
-            <div class="product-card">
-                <h2>Workers KV</h2>
-                <div class="input-group">
-                    <label for="kv-reads">Read Requests/Day</label>
-                    <input type="number" id="kv-reads" value="1">
-                    <label for="kv-writes">Write Requests/Day</label>
-                    <input type="number" id="kv-writes" value="1">
-                    <label for="kv-deletes">Delete Requests/Day</label>
-                    <input type="number" id="kv-deletes" value="1">
-                    <label for="kv-lists">List Requests/Day</label>
-                    <input type="number" id="kv-lists" value="1">
-                    <label for="kv-storage">Storage (GB)</label>
-                    <input type="number" id="kv-storage" value="1">
-                </div>
-                <div class="price">Estimated Cost: $<span id="kv-price">0.00</span></div>
-            </div>
-
-            <!-- Analytics Engine -->
-            <div class="product-card">
-                <h2>Analytics Engine</h2>
-                <div class="input-group">
-                    <label for="analytics-datapoints">Data Points/Day</label>
-                    <input type="number" id="analytics-datapoints" value="1000">
-                    <label for="analytics-queries">Read Queries/Day</label>
-                    <input type="number" id="analytics-queries" value="500">
-                </div>
-                <div class="price">Estimated Cost: $<span id="analytics-price">0.00</span></div>
-            </div>
-
-            <!-- Zaraz -->
-            <div class="product-card">
-                <h2>Zaraz</h2>
-                <div class="input-group">
-                    <label for="zaraz-events">Daily Events</label>
-                    <input type="number" id="zaraz-events" value="1000">
-                </div>
-                <div class="price">Estimated Cost: $<span id="zaraz-price">0.00</span></div>
-            </div>
-
-            <!-- AI Gateway -->
-            <div class="product-card">
-                <h2>AI Gateway</h2>
-                <div class="input-group">
-                    <label for="ai-gateway-logs">Logs Per Day</label>
-                    <input type="number" id="ai-gateway-logs" value="100">
-                </div>
-                <div class="price">Estimated Cost: $<span id="ai-gateway-price">0.00</span></div>
-            </div>
-
-            <!-- CI/CD -->
-            <div class="product-card">
-                <h2>CI/CD</h2>
-                <div class="input-group">
-                    <label for="cicd-minutes">Minutes Per Day</label>
-                    <input type="number" id="cicd-minutes" value="1">
-                </div>
-                <div class="price">Estimated Cost: $<span id="cicd-price">0.00</span></div>
-            </div>
-        </div>
-        
         <div class="total-cost">
             <h2>Total Monthly Cost: $<span id="total-price">0.00</span></h2>
         </div>
