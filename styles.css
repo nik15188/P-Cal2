@@ -78,3 +78,17 @@ h1 {
         grid-template-columns: 1fr;
     }
 }
+// ... existing styles ...
+
+.total-cost {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.total-cost h2 {
+    color: #333;
+}
