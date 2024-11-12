@@ -1,33 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
-    // Highlight active section in navigation
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('.product-section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        let currentSection = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 100) {
-                currentSection = '#' + section.getAttribute('id');
+    // Get all category buttons
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    
+    // Add click event listener to each button
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Get the target section id from data-target attribute
+            const targetId = this.getAttribute('data-target');
+            
+            // Find the target section
+            const targetSection = document.getElementById(targetId);
+            
+            // Scroll to the section smoothly
+            if (targetSection) {
+                // Get the height of the sticky header
+                const navHeight = document.querySelector('.category-nav').offsetHeight;
+                const totalCostHeight = document.querySelector('.total-cost').offsetHeight;
+                
+                // Calculate the final scroll position
+                const targetPosition = targetSection.offsetTop - navHeight - totalCostHeight - 20;
+                
+                // Smooth scroll to target
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === currentSection) {
-                link.classList.add('active');
-            }
-        });
     });
-});
+}); 
