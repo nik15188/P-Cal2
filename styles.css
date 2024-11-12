@@ -1,113 +1,280 @@
-body {
-    display: flex;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 2rem;
     background-color: #f5f5f5;
 }
 
-.sidebar {
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    background-color: #333;
-    color: white;
-    padding: 2rem 1rem;
-}
-
-.sidebar h2 {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #444;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar .nav-link {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 0.75rem 1rem;
-    margin: 0.5rem 0;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.sidebar .nav-link:hover {
-    background-color: #444;
-}
-
 main {
-    margin-left: 250px;
-    padding: 2rem;
-    width: calc(100% - 250px);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.product-section {
-    margin-bottom: 3rem;
-    scroll-margin-top: 2rem;
-}
-
-.section-title {
-    font-size: 1.8rem;
+h1 {
+    text-align: center;
     margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Category Navigation */
+.category-nav {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100;
+    border-radius: 8px;
+}
+
+.category-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.category-btn:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.category-btn.active {
+    background: #2196F3;
+    color: white;
+    border-color: #1976D2;
+}
+
+.category-btn .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Section Headers */
+.section-header {
+    margin: 3rem 0 1.5rem 0;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid #333;
 }
 
+.section-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Product Grid */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    margin-bottom: 2rem;
 }
 
-/* Existing product card styles remain the same */
+/* Product Cards */
 .product-card {
     background: white;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Add smooth scrolling */
-html {
-    scroll-behavior: smooth;
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Responsive adjustments */
-@media (max-width: 1400px) {
+.product-card h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Input Groups */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.input-group input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+/* Calculate Button */
+.calculate-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 1rem 0;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 500;
+}
+
+.calculate-btn:hover {
+    background-color: #1976D2;
+    transform: translateY(-2px);
+}
+
+.calculate-btn:active {
+    transform: translateY(0);
+}
+
+/* Price Display */
+.price {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+/* Total Cost Section */
+.total-cost {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.total-cost h2 {
+    color: #333;
+}
+
+/* Section Scroll Margin */
+section {
+    scroll-margin-top: 120px;
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Error State */
+.error {
+    border-color: #dc3545 !important;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+/* Success State */
+.success {
+    border-color: #28a745 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 1024px) {
-    .sidebar {
-        width: 200px;
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
     }
     
-    main {
-        margin-left: 200px;
-        width: calc(100% - 200px);
+    .category-nav {
+        flex-wrap: wrap;
+        padding: 0.5rem;
+    }
+    
+    .category-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
     }
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: static;
+@media (max-width: 480px) {
+    .category-btn {
+        width: calc(50% - 0.5rem);
+        padding: 0.5rem;
     }
-    
-    main {
-        margin-left: 0;
-        width: 100%;
+
+    .category-btn .icon {
+        font-size: 1.2rem;
     }
-    
-    .products-grid {
-        grid-template-columns: 1fr;
+
+    .product-card {
+        padding: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .category-nav {
+        display: none;
+    }
+
+    .calculate-btn {
+        display: none;
+    }
+
+    .product-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
     }
 }
