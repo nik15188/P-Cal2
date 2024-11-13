@@ -23,7 +23,7 @@
             <button class="category-btn" data-target="dx">DX Tools</button>
         </nav>
 
-        <div class="sections-container">
+        <main>
             <section id="compute" class="category-section">
                 <h2>Compute</h2>
                 <div class="product-grid">
@@ -31,11 +31,11 @@
                         <h3>Workers</h3>
                         <div class="input-group">
                             <label for="workers-requests">Requests/Day:</label>
-                            <input type="text" id="workers-requests" value="0">
+                            <input type="number" id="workers-requests" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="workers-cpu">CPU Time/Invocation (ms):</label>
-                            <input type="text" id="workers-cpu" value="0">
+                            <input type="number" id="workers-cpu" value="0" min="0" step="0.001">
                         </div>
                         <button class="calculate-btn" onclick="calculateWorkers()">Calculate</button>
                         <div class="price">Price: $<span id="workers-price">0.00</span></div>
@@ -50,15 +50,15 @@
                         <h3>R2</h3>
                         <div class="input-group">
                             <label for="r2-storage">Storage (GB):</label>
-                            <input type="text" id="r2-storage" value="0">
+                            <input type="number" id="r2-storage" value="0" min="0" step="0.1">
                         </div>
                         <div class="input-group">
                             <label for="r2-class-a">Class A Operations/Day:</label>
-                            <input type="text" id="r2-class-a" value="0">
+                            <input type="number" id="r2-class-a" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="r2-class-b">Class B Operations/Day:</label>
-                            <input type="text" id="r2-class-b" value="0">
+                            <input type="number" id="r2-class-b" value="0" min="0" step="1">
                         </div>
                         <button class="calculate-btn" onclick="calculateR2()">Calculate</button>
                         <div class="price">Price: $<span id="r2-price">0.00</span></div>
@@ -68,23 +68,23 @@
                         <h3>Workers KV</h3>
                         <div class="input-group">
                             <label for="kv-reads">Read Requests/Day:</label>
-                            <input type="text" id="kv-reads" value="0">
+                            <input type="number" id="kv-reads" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="kv-writes">Write Requests/Day:</label>
-                            <input type="text" id="kv-writes" value="0">
+                            <input type="number" id="kv-writes" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="kv-deletes">Delete Requests/Day:</label>
-                            <input type="text" id="kv-deletes" value="0">
+                            <input type="number" id="kv-deletes" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="kv-lists">List Requests/Day:</label>
-                            <input type="text" id="kv-lists" value="0">
+                            <input type="number" id="kv-lists" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="kv-storage">Storage (GB):</label>
-                            <input type="text" id="kv-storage" value="0">
+                            <input type="number" id="kv-storage" value="0" min="0" step="0.1">
                         </div>
                         <button class="calculate-btn" onclick="calculateKV()">Calculate</button>
                         <div class="price">Price: $<span id="kv-price">0.00</span></div>
@@ -94,15 +94,15 @@
                         <h3>D1</h3>
                         <div class="input-group">
                             <label for="d1-reads">Rows Read/Day:</label>
-                            <input type="text" id="d1-reads" value="0">
+                            <input type="number" id="d1-reads" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="d1-writes">Rows Written/Day:</label>
-                            <input type="text" id="d1-writes" value="0">
+                            <input type="number" id="d1-writes" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="d1-storage">Storage (GB):</label>
-                            <input type="text" id="d1-storage" value="0">
+                            <input type="number" id="d1-storage" value="0" min="0" step="0.1">
                         </div>
                         <button class="calculate-btn" onclick="calculateD1()">Calculate</button>
                         <div class="price">Price: $<span id="d1-price">0.00</span></div>
@@ -112,11 +112,11 @@
                         <h3>Durable Objects</h3>
                         <div class="input-group">
                             <label for="do-requests">Requests/Day:</label>
-                            <input type="text" id="do-requests" value="0">
+                            <input type="number" id="do-requests" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="do-duration">GB-Seconds/Day:</label>
-                            <input type="text" id="do-duration" value="0">
+                            <input type="number" id="do-duration" value="0" min="0" step="0.1">
                         </div>
                         <button class="calculate-btn" onclick="calculateDO()">Calculate</button>
                         <div class="price">Price: $<span id="do-price">0.00</span></div>
@@ -131,7 +131,7 @@
                         <h3>AI Gateway</h3>
                         <div class="input-group">
                             <label for="ai-gateway-logs">Logs/Day:</label>
-                            <input type="text" id="ai-gateway-logs" value="0">
+                            <input type="number" id="ai-gateway-logs" value="0" min="0" step="1">
                         </div>
                         <button class="calculate-btn" onclick="calculateAIGateway()">Calculate</button>
                         <div class="price">Price: $<span id="ai-gateway-price">0.00</span></div>
@@ -141,11 +141,11 @@
                         <h3>Vectorize</h3>
                         <div class="input-group">
                             <label for="vectorize-queries">Queried Vector Dimensions/Month:</label>
-                            <input type="text" id="vectorize-queries" value="0">
+                            <input type="number" id="vectorize-queries" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="vectorize-storage">Stored Vector Dimensions:</label>
-                            <input type="text" id="vectorize-storage" value="0">
+                            <input type="number" id="vectorize-storage" value="0" min="0" step="1">
                         </div>
                         <button class="calculate-btn" onclick="calculateVectorize()">Calculate</button>
                         <div class="price">Price: $<span id="vectorize-price">0.00</span></div>
@@ -160,7 +160,7 @@
                         <h3>Workers CI/CD</h3>
                         <div class="input-group">
                             <label for="cicd-minutes">Minutes/Day:</label>
-                            <input type="text" id="cicd-minutes" value="0">
+                            <input type="number" id="cicd-minutes" value="0" min="0" step="1">
                         </div>
                         <button class="calculate-btn" onclick="calculateCICD()">Calculate</button>
                         <div class="price">Price: $<span id="cicd-price">0.00</span></div>
@@ -170,7 +170,7 @@
                         <h3>Observability</h3>
                         <div class="input-group">
                             <label for="obs-events">Events/Day:</label>
-                            <input type="text" id="obs-events" value="0">
+                            <input type="number" id="obs-events" value="0" min="0" step="1">
                         </div>
                         <button class="calculate-btn" onclick="calculateObservability()">Calculate</button>
                         <div class="price">Price: $<span id="obs-price">0.00</span></div>
@@ -180,11 +180,11 @@
                         <h3>Workers Analytics Engine</h3>
                         <div class="input-group">
                             <label for="analytics-datapoints">Data Points/Day:</label>
-                            <input type="text" id="analytics-datapoints" value="0">
+                            <input type="number" id="analytics-datapoints" value="0" min="0" step="1">
                         </div>
                         <div class="input-group">
                             <label for="analytics-queries">Read Queries/Day:</label>
-                            <input type="text" id="analytics-queries" value="0">
+                            <input type="number" id="analytics-queries" value="0" min="0" step="1">
                         </div>
                         <button class="calculate-btn" onclick="calculateAnalytics()">Calculate</button>
                         <div class="price">Price: $<span id="analytics-price">0.00</span></div>
@@ -194,14 +194,14 @@
                         <h3>Zaraz</h3>
                         <div class="input-group">
                             <label for="zaraz-events">Events/Day:</label>
-                            <input type="text" id="zaraz-events" value="0">
+                            <input type="number" id="zaraz-events" value="0" min="0" step="1">
                         </div>
                         <button class="calculate-btn" onclick="calculateZaraz()">Calculate</button>
                         <div class="price">Price: $<span id="zaraz-price">0.00</span></div>
                     </div>
                 </div>
             </section>
-        </div>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
