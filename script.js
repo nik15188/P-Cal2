@@ -1,3 +1,152 @@
+/* Base styles */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Total cost styles */
+.total-cost {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Navigation styles */
+.category-nav {
+    position: sticky;
+    top: 60px;
+    background-color: white;
+    z-index: 99;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.category-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.category-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Category section styles */
+.category-section {
+    margin-bottom: 40px;
+}
+
+.category-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Product grid layout */
+.category-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Product card styles */
+.product-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Input group styles */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button styles */
+.calculate-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.calculate-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Price display styles */
+.price {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .category-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .category-nav {
+        flex-wrap: wrap;
+    }
+}
+
 // Pricing constants for all products
 const PRICING = {
   workers: {
